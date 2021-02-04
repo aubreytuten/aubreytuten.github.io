@@ -5,10 +5,13 @@
 	<title>Bouncing Box</title>
 	<script src="jquery.min.js"></script>
 	<style>
+        .board {
+        background-image: url("https://images.ctfassets.net/ujl8rfpmh7ux/1Psjye9iUSoIAVVWOVfsXj/61798bf43d5d1f98d8758bc328440a0d/sebastien-gabriel--IMlv9Jlb24-unsplash.jpg");
+        }
 		.box {
 			width: 70px;
 			height: 70px;
-			background-color: teal;
+			background-color: rgb(166, 167, 235);
 			font-size: 300%;
 			text-align: center;
 			display: block;
@@ -22,7 +25,7 @@
 </head>
 <body class="board">
 	<!-- HTML for the box -->
-	<div class="box">?</div>
+    <div class="box">?</div>
 
 	<script>
 		(function(){
@@ -35,7 +38,8 @@
 			
 			var box = jQuery('.box');	// reference to the HTML .box element
 			var board = jQuery('.board');	// reference to the HTML .board element
-			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
+            var boardWidth = board.width();	// the maximum X-Coordinate of the screen
+            var boxWidth = box.width();
 
 			// Every 50 milliseconds, call the update Function (see below)
 			setInterval(update, 50);
@@ -44,8 +48,9 @@
 			box.on('click', handleBoxClick);
 
 			// moves the Box to a new position on the screen along the X-Axis
-			function moveBoxTo(newPositionX) {
-				box.css("left", newPositionX);
+			function moveBoxTo(newPositionX, newPositionY) {
+                box.css("left", newPositionX);
+                box.css("top", newPositionY);
 			}
 
 			// changes the text displayed on the Box
@@ -58,8 +63,14 @@
 			//////////////////////////////////////////////////////////////////
 			
 			// TODO 2 - Variable declarations 
-			
-
+            var positionX = 0; 
+            var positionY = 0;
+            var points = 0;
+            var speed = 10;
+            var speedY = 10;
+            var boardHeight = jQuery(window).height();
+            var randNumX = getRNDInteger(0, boardWidth);
+            var randNumY = getRNDInteger(0, boardHeight);
 			
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
@@ -67,9 +78,24 @@
 			turn it around! 
 			*/
 			function update() {
-				
+                moveBoxTo(positionX, positionY);
+                positionX = positionX + speed;
+                positionY = positionY + speedY;
+                if (positionX > boardWidth - boxWidth) {
+                    speed = -speed;
+                }
+                if (positionX < 0) {
+                    speed = -speed;
+                }
+                if (positionY > boardHeight - boxWidth
+                ) {
+                    speedY = -speedY;
+                }
+                if (positionY < 0) {
+                    speedY = -speedY;
+                }
 
-			};
+            };
 
 			/* 
 			This Function will be called each time the box is clicked. Each time it is called,
@@ -77,10 +103,19 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				
+                positionX = randNumX;
+                positionY = randNumY;
+                changeBoxText(points);
+                points++;
+                speed = speed + 3;
+                speedY = speedY + 3;
 
+            };
 
-			};
+            function getRNDInteger(min, max) {
+                return Math.floor(Math.random() * (max - min +1) ) + min;
+            }
+        
 		})();
 	</script>
 </body>
