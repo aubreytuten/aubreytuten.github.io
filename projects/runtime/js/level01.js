@@ -23,6 +23,7 @@ var level01 = function (window) {
                 { "type": "sawblade", "x": 600, "y": groundY },
                 { "type": "sawblade", "x": 900, "y": groundY },
                 { "type": "enemy", "x": 900, "y": groundY },
+                { "type": "reward", "x": 500, "y": groundY - 60 },
             ]
         };
 
@@ -39,16 +40,13 @@ var level01 = function (window) {
             objType = obj.type;
 
             if (objType === 'sawBlade') {
-
                 createObstacle(objX, objY);
-            }
-            else if (objType === 'enemy') {
-
+            }else if (objType === 'enemy') {
                 createEnemy(objX, objY);
-            }
-            else{
-
+            }else if (objType === 'reward'{
                 createReward(objX, objY);
+            }else{
+                createBallOfFire(objX, objY)
             }
         }
 
@@ -74,9 +72,11 @@ var level01 = function (window) {
             obstacleImage.y = -25;
         }
 
+        /*
         createSawBlade(400, groundY - 5);
         createSawBlade(600, groundY - 110);
         createSawBlade(900, groundY - 110);
+        */
 
         function createBallOfFire(x, y) {
             var hitZoneSize = 25;
@@ -90,12 +90,12 @@ var level01 = function (window) {
             var obstacleImage = draw.bitmap('img/fire.png')
             ballOfFireHitZone.addChild(obstacleImage); 
             obstacleImage.x = -25;
-            obstacleImage.y = -25;
+            obstacleImage.y = -45;
             obstacleImage.scaleX = .15;
             obstacleImage.scaleY = .15;
         };
 
-        createBallOfFire(1300, groundY - 110);
+        //createBallOfFire(1300, groundY - 110);
 
         function createEnemy(x, y) {
             var enemy = game.createGameItem('enemy', 25);
@@ -120,9 +120,11 @@ var level01 = function (window) {
             };
         }
 
+        /*
         createEnemy(400, groundY-10);
         createEnemy(800, groundY-100);
         createEnemy(1200, groundY-50);
+        */
 
         function createReward(x, y) {
             var crown = game.createGameItem('crown', 25);
@@ -145,7 +147,7 @@ var level01 = function (window) {
 
         }
 
-        createReward(400, groundY - 60);
+        //createReward(400, groundY - 60);
        
 
 
