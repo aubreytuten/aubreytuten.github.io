@@ -43,7 +43,7 @@ var level01 = function (window) {
                 createObstacle(objX, objY);
             }else if (objType === 'enemy') {
                 createEnemy(objX, objY);
-            }else if (objType === 'reward'{
+            }else if (objType === 'reward') {
                 createReward(objX, objY);
             }else{
                 createBallOfFire(objX, objY)
@@ -97,6 +97,7 @@ var level01 = function (window) {
 
         //createBallOfFire(1300, groundY - 110);
 
+        /*
         function createEnemy(x, y) {
             var enemy = game.createGameItem('enemy', 25);
             var redSquare = draw.rect(50, 50, 'red');
@@ -120,7 +121,7 @@ var level01 = function (window) {
             };
         }
 
-        /*
+        
         createEnemy(400, groundY-10);
         createEnemy(800, groundY-100);
         createEnemy(1200, groundY-50);
