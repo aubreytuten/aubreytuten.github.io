@@ -38,8 +38,7 @@ var background = function (window) {
             // TODO: 2 - Part 2
             // this fills the background with a obnoxious yellow
             // you should modify this to suit your game
-            var backgroundFill = draw.rect(canvasWidth,canvasHeight,'#5aede6');
-            background.addChild(backgroundFill);
+            
             
             // TODO: 3 - Add a moon and starfield
             /*
@@ -56,15 +55,7 @@ var background = function (window) {
             moon.scaleX = .50;
             moon.scaleY = .50;
             background.addChild(moon);
-            */ 
-
-            ///making background
-            var volcano;
-            var volcanoImg;
-            backgroundFill = draw.rect(canvasWidth,canvasHeight,'#5aede6');
-            background.addChild(backgroundFill);
-            var volcanoImg = draw.bitmap('img/volcano.mhtml')
-
+            */          
 
 
             
