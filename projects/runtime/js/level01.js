@@ -19,11 +19,18 @@ var level01 = function (window) {
             "number": 1, 
             "speed": -3,
             "gameItems": [
-                { "type": "sawblade", "x": 400, "y": groundY },
-                { "type": "sawblade", "x": 600, "y": groundY },
-                { "type": "sawblade", "x": 900, "y": groundY },
-                { "type": "enemy", "x": 900, "y": groundY },
-                { "type": "reward", "x": 500, "y": groundY - 60 },
+                { "type": "RedAndBlueFlame", "x": 400, "y": groundY - 30 },
+                { "type": "RedAndBlueFlame", "x":600, "y": groundY - 30},
+                { "type": "RedAndBlueFlame", "x": 900, "y": groundY - 30 },
+                { "type": "ballOfFire", "x": 1200, "y": groundY - 80 },
+                { "type": "reward", "x": 1400, "y": groundY - 60 },
+                { "type": "RedAndBlueFlame", "x": 1900, "y": groundY - 30 },
+                { "type": "reward", "x": 1925, "y": groundY - 80 },
+                { "type": "ballOfFire", "x": 2100, "y": groundY - 80 },
+                { "type": "ballOfFire", "x": 2300, "y": groundY - 80 },
+                { "type": "ballOfFire", "x": 2600, "y": groundY - 80 },
+                { "type": "ballOfFire", "x": 2900, "y": groundY - 80 },
+
             ]
         };
 
@@ -39,10 +46,10 @@ var level01 = function (window) {
             objY = obj.y;
             objType = obj.type;
 
-            if (objType === 'sawBlade') {
-                createObstacle(objX, objY);
-            }else if (objType === 'enemy') {
-                createEnemy(objX, objY);
+            if (objType === 'RedAndBlueFlame') {
+                createRedAndBlueFlame(objX, objY);
+            }else if (objType === 'ballOfFire') {
+                createBallOfFire(objX, objY);
             }else if (objType === 'reward') {
                 createReward(objX, objY);
             }else{
@@ -57,6 +64,7 @@ var level01 = function (window) {
         // TODO 6 and on go here
         // BEGIN EDITING YOUR CODE HERE
         
+        /*
         function createSawBlade(x, y) {
             var hitZoneSize = 25;
             var damageFromObstacle = 10;
@@ -71,6 +79,7 @@ var level01 = function (window) {
             obstacleImage.x = -25;
             obstacleImage.y = -25;
         }
+        */
 
         /*
         createSawBlade(400, groundY - 5);
@@ -78,21 +87,48 @@ var level01 = function (window) {
         createSawBlade(900, groundY - 110);
         */
 
-        function createBallOfFire(x, y) {
+        function createRedAndBlueFlame(x, y) {
             var hitZoneSize = 25;
             var damageFromObstacle = 10;
-            var ballOfFireHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);
-            ballOfFireHitZone.x = x;
-            ballOfFireHitZone.y = y;
+            var RedAndBlueFlameHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);
+            RedAndBlueFlameHitZone.x = x;
+            RedAndBlueFlameHitZone.y = y;
 
-            game.addGameItem(ballOfFireHitZone);   
+            game.addGameItem(RedAndBlueFlameHitZone);   
 
-            var obstacleImage = draw.bitmap('img/fire.png')
-            ballOfFireHitZone.addChild(obstacleImage); 
+            var obstacleImage = draw.bitmap('img/RedAndBlueFlame.png');
+            RedAndBlueFlameHitZone.addChild(obstacleImage); 
             obstacleImage.x = -25;
-            obstacleImage.y = -45;
-            obstacleImage.scaleX = .15;
-            obstacleImage.scaleY = .15;
+            obstacleImage.y = -25;
+            obstacleImage.scaleX = .12;
+            obstacleImage.scaleY = .12;
+        }
+
+
+            function createBallOfFire(x, y)  {
+                    var fire = game.createGameItem('ballOfFire',25);
+                    var fireImg = draw.bitmap('img/fire.png');
+                    fireImg.x = -25;
+                    fireImg.y = -25;
+                    fire.addChild(fireImg);
+                    fire.x = x;
+                    fire.y = y;
+                    fire.scaleX = .15;
+                    fire.scaleY = .15;
+                    game.addGameItem(fire);
+                    fire.velocityX = -2.5;
+                    
+
+                        fire.onPlayerCollision = function() {
+                            game.changeIntegrity(-10);
+                        };
+                        fire.onProjectileCollision = function() {
+                            fire.fadeOut();
+                            game.increaseScore(100);
+                        }
+                    
+
+
         };
 
         //createBallOfFire(1300, groundY - 110);
@@ -135,8 +171,8 @@ var level01 = function (window) {
             blueSquare.x = -30;
             blueSquare.y = -25;
             crown.addChild(blueSquare);
-            crown.x = 400;
-            crown.y = groundY - 50;
+            crown.x = x;
+            crown.y = y;
             game.addGameItem(crown);
 
             crown.velocityX = -2;

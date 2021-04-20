@@ -42,6 +42,7 @@ var background = function (window) {
             background.addChild(backgroundFill);
             
             // TODO: 3 - Add a moon and starfield
+            /*
             for (var i = 0; i < 300; i++) {
             var circle = draw.circle(5,'white','LightGray',2);
             circle.x = canvasWidth*Math.random();
@@ -55,10 +56,20 @@ var background = function (window) {
             moon.scaleX = .50;
             moon.scaleY = .50;
             background.addChild(moon);
+            */ 
+
+            ///making background
+            var volcano;
+            var volcanoImg;
+            backgroundFill = draw.rect(canvasWidth,canvasHeight,'#5aede6');
+            background.addChild(backgroundFill);
+            var volcanoImg = draw.bitmap('img/volcano.mhtml')
+
 
 
             
             // TODO 5: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
+            /*
             for (var i = 0; i < 5; i++) {
                 var buildingHeight = Math.random() * 300;
                     if (buildingHeight <= 200) {
@@ -76,6 +87,7 @@ var background = function (window) {
             tree.x = 170;
             tree.y = groundY - 250;
             background.addChild(tree);
+            */
             
         } // end of render function - DO NOT DELETE
         
@@ -89,6 +101,7 @@ var background = function (window) {
             var groundY = ground.y;
             
             // TODO 4: Part 2 - Move the tree!
+            /*
             tree.x = tree.x - 1;
 
             if(tree.x < -200) {
@@ -103,6 +116,7 @@ var background = function (window) {
                     building.x = canvasWidth;
                 }
             }
+            */
 
         } // end of update function - DO NOT DELETE
         
