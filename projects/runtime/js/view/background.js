@@ -109,6 +109,15 @@ var background = function (window) {
             }
             */
 
+            //LEVEL ONE CLEARED
+            var levelOneCleared;
+            levelOneCleared = draw.bitmap('img/levelonecleared.png');
+            levelOneCleared.x = 170;
+            levelOneCleared.y = groundY - 1150;
+            background.addChild(levelOneCleared);
+
+
+
         } // end of update function - DO NOT DELETE
         
         

@@ -29,7 +29,7 @@ var level01 = function (window) {
                 { "type": "ballOfFire", "x": 2100, "y": groundY - 80 },
                 { "type": "ballOfFire", "x": 2300, "y": groundY - 80 },
                 { "type": "ballOfFire", "x": 2600, "y": groundY - 80 },
-                { "type": "ballOfFire", "x": 2900, "y": groundY - 80 },
+                { "type": "ballOfFire", "x": 2900, "y": groundY - 140 },
 
             ]
         };
