@@ -27,6 +27,7 @@ var background = function (window) {
         var tree;
         var building;
         var buildings = [];
+        var levelOneCleared;
         // ANIMATION VARIABLES HERE:
         
      
@@ -79,6 +80,14 @@ var background = function (window) {
             tree.y = groundY - 250;
             background.addChild(tree);
             */
+
+             //LEVEL ONE SIGN
+            levelOneCleared = draw.bitmap('img/levelonecleared.png');
+            levelOneCleared.x = 4000;
+            levelOneCleared.y = groundY - 470;
+            background.addChild(levelOneCleared);
+            levelOneCleared.scaleX = .5
+            levelOneCleared.scaleY = .5
             
         } // end of render function - DO NOT DELETE
         
@@ -109,12 +118,8 @@ var background = function (window) {
             }
             */
 
-            //LEVEL ONE CLEARED
-            var levelOneCleared;
-            levelOneCleared = draw.bitmap('img/levelonecleared.png');
-            levelOneCleared.x = 170;
-            levelOneCleared.y = groundY - 1150;
-            background.addChild(levelOneCleared);
+           
+            levelOneCleared.x = levelOneCleared.x - 2.75;
 
 
 
