@@ -62,8 +62,7 @@ var level01 = function (window) {
 
         window.levelData = levelData;
         // set this to true or false depending on if you want to see hitzones
-        game.setDebugMode(false);
-
+        game.setDebugMode(true);
         // TODO 6 and on go here
         // BEGIN EDITING YOUR CODE HERE
         
@@ -91,7 +90,7 @@ var level01 = function (window) {
         */
 
         function createRedAndBlueFlame(x, y) {
-            var hitZoneSize = 25;
+            var hitZoneSize = 10;
             var damageFromObstacle = 10;
             var RedAndBlueFlameHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);
             RedAndBlueFlameHitZone.x = x;
@@ -102,14 +101,16 @@ var level01 = function (window) {
             var obstacleImage = draw.bitmap('img/RedAndBlueFlame.png');
             RedAndBlueFlameHitZone.addChild(obstacleImage); 
             obstacleImage.x = -25;
-            obstacleImage.y = -25;
+            obstacleImage.y = -30;
             obstacleImage.scaleX = .12;
             obstacleImage.scaleY = .12;
+
+            
         }
 
 
         function createBallOfFire(x, y)  {
-                var fire = game.createGameItem('ballOfFire',25);
+                var fire = game.createGameItem('ballOfFire', 25);
                 var fireImg = draw.bitmap('img/fire.png');
                 fireImg.x = -25;
                 fireImg.y = -25;
@@ -172,7 +173,7 @@ var level01 = function (window) {
             blueSquare.scaleX = .025;
             blueSquare.scaleY = .025;
             blueSquare.x = -30;
-            blueSquare.y = -25;
+            blueSquare.y = -30;
             crown.addChild(blueSquare);
             crown.x = x;
             crown.y = y;
