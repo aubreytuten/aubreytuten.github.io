@@ -30,6 +30,7 @@ var level01 = function (window) {
                 { "type": "ballOfFire", "x": 2300, "y": groundY - 80 },
                 { "type": "ballOfFire", "x": 2600, "y": groundY - 80 },
                 { "type": "ballOfFire", "x": 2900, "y": groundY - 140 },
+                /*{ "type": "fireHalo", "x": 4200, "y": groundY - 80 },*/
 
             ]
         };
@@ -52,14 +53,16 @@ var level01 = function (window) {
                 createBallOfFire(objX, objY);
             }else if (objType === 'reward') {
                 createReward(objX, objY);
-            }else{
+            }/*else if (objType === 'fireHalo') {
+                createFireHalo(objX, objY);
+            }*/else{
                 createBallOfFire(objX, objY)
             }
         }
 
         window.levelData = levelData;
         // set this to true or false depending on if you want to see hitzones
-        game.setDebugMode(true);
+        game.setDebugMode(false);
 
         // TODO 6 and on go here
         // BEGIN EDITING YOUR CODE HERE
@@ -105,27 +108,27 @@ var level01 = function (window) {
         }
 
 
-            function createBallOfFire(x, y)  {
-                    var fire = game.createGameItem('ballOfFire',25);
-                    var fireImg = draw.bitmap('img/fire.png');
-                    fireImg.x = -25;
-                    fireImg.y = -25;
-                    fire.addChild(fireImg);
-                    fire.x = x;
-                    fire.y = y;
-                    fire.scaleX = .15;
-                    fire.scaleY = .15;
-                    game.addGameItem(fire);
-                    fire.velocityX = -2.5;
+        function createBallOfFire(x, y)  {
+                var fire = game.createGameItem('ballOfFire',25);
+                var fireImg = draw.bitmap('img/fire.png');
+                fireImg.x = -25;
+                fireImg.y = -25;
+                fire.addChild(fireImg);
+                fire.x = x;
+                fire.y = y;
+                fire.scaleX = .15;
+                fire.scaleY = .15;
+                game.addGameItem(fire);
+                fire.velocityX = -2.5;
                     
 
-                        fire.onPlayerCollision = function() {
-                            game.changeIntegrity(-10);
-                        };
-                        fire.onProjectileCollision = function() {
-                            fire.fadeOut();
-                            game.increaseScore(100);
-                        }
+                    fire.onPlayerCollision = function() {
+                        game.changeIntegrity(-10);
+                    };
+                    fire.onProjectileCollision = function() {
+                        fire.fadeOut();
+                        game.increaseScore(100);
+                    }
                     
 
 
@@ -182,7 +185,30 @@ var level01 = function (window) {
                 crown.fadeOut();
             };
 
+    //Need to find a way to fix and make this work //
+            //could not figure out how to make show up//
+/*
+        function createFireHalo(x, y) {
+            var fireHalo = game.createGameItem('fireHalo', 25);
+            var haloImg = draw.bitmap('img/firehalo.png');
+            haloImg.x = -25;
+            haloImg.y = -25;
+            fireHalo.addChild(haloImg);
+            fireHalo.x = x;
+            fireHalo.y = y;
+            game.addGameItem(fireHalo);
+
+            fireHalo.velocityX = -2;
+
+            fireHalo.onPlayerCollision = function() {
+                game.changeIntegrity(15);
+                fireHalo.fadeOut();
+            };
+
         }
+*/
+        
+    };
 
         //createReward(400, groundY - 60);
        
